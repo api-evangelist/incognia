@@ -1,0 +1,33 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/incognia-openapi-original.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: client_id and client_secret sent as HTTP Basic credentials to the token endpoint.
+  sources:
+  - openapi/incognia-openapi-original.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: OAuth 2.0 bearer access token obtained from POST /v2/token.
+  sources:
+  - openapi/incognia-openapi-original.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.incognia.com/api/v2/token
+    scopes: 0
+  description: OAuth 2.0 client-credentials grant. No scopes are defined; access is scoped by
+    the credential's tenant.
+  sources:
+  - openapi/incognia-openapi-original.yml
