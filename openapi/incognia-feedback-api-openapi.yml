@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: Incognia Authentication Feedback API
+  version: v2
+  description: 'Incognia is a location identity and device fingerprinting platform for fraud prevention. The API returns real-time risk assessments (low_risk, high_risk, unknown_risk) for onboarding signups and authentication transactions (login and payment), and accepts feedback events used to continuously tune the risk model. Assessments combine device recognition signals, location behavior analysis, and tamper detection. Authentication uses OAuth 2.0 client credentials: a client_id and client_secret are exchanged at the token endpoint for a short-lived bearer access token.'
+  contact:
+    name: Incognia Developer Support
+    url: https://developer.incognia.com/
+  x-source: Faithfully reconstructed from the official Incognia Go client library (github.com/inloco/incognia-go) endpoints, request and response types. Not a provider-published OpenAPI.
+servers:
+- url: https://api.incognia.com/api
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Feedback
+  description: Report labeled events to tune the risk model
+paths:
+  /v2/feedbacks:
+    post:
+      operationId: registerFeedback
+      tags:
+      - Feedback
+      summary: Register a feedback event
+      description: Report a labeled event (for example account_takeover, chargeback, signup_accepted, payment_declined) tied to an assessment or account so Incognia can tune its risk model. Identify the subject with any of installation_id, request_token, login_id, payment_id, signup_id, account_id or external_id.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackRequest'
+      responses:
+        '200':
+          description: Feedback accepted
+        '400':
+          description: Invalid feedback parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Missing or invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    PersonID:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
+    FeedbackRequest:
+      type: object
+      required:
+      - event
+      properties:
+        event:
+          type: string
+          description: The labeled feedback event.
+          enum:
+          - account_allowed
+          - device_allowed
+          - verified
+          - reset
+          - account_takeover
+          - identity_fraud
+          - chargeback
+          - chargeback_notification
+          - promotion_abuse
+          - login_accepted
+          - login_accepted_by_device_verification
+          - login_accepted_by_facial_biometrics
+          - login_accepted_by_manual_review
+          - login_declined
+          - login_declined_by_facial_biometrics
+          - login_declined_by_manual_review
+          - payment_accepted
+          - payment_accepted_by_control_group
+          - payment_accepted_by_third_party
+          - payment_declined
+          - payment_declined_by_acquirer
+          - payment_declined_by_business
+          - payment_declined_by_manual_review
+          - payment_declined_by_risk_analysis
+          - signup_accepted
+          - signup_declined
+        occurred_at:
+          type: string
+          format: date-time
+        expires_at:
+          type: string
+          format: date-time
+        installation_id:
+          type: string
+        session_token:
+          type: string
+        request_token:
+          type: string
+        login_id:
+          type: string
+        payment_id:
+          type: string
+        signup_id:
+          type: string
+        account_id:
+          type: string
+        external_id:
+          type: string
+        person_id:
+          $ref: '#/components/schemas/PersonID'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: client_id and client_secret sent as HTTP Basic credentials to the token endpoint.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer access token obtained from POST /v2/token.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client-credentials grant. No scopes are defined; access is scoped by the credential's tenant.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.incognia.com/api/v2/token
+          scopes: {}

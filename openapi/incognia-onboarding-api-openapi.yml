@@ -1,0 +1,198 @@
+openapi: 3.1.0
+info:
+  title: Incognia Authentication Onboarding API
+  version: v2
+  description: 'Incognia is a location identity and device fingerprinting platform for fraud prevention. The API returns real-time risk assessments (low_risk, high_risk, unknown_risk) for onboarding signups and authentication transactions (login and payment), and accepts feedback events used to continuously tune the risk model. Assessments combine device recognition signals, location behavior analysis, and tamper detection. Authentication uses OAuth 2.0 client credentials: a client_id and client_secret are exchanged at the token endpoint for a short-lived bearer access token.'
+  contact:
+    name: Incognia Developer Support
+    url: https://developer.incognia.com/
+  x-source: Faithfully reconstructed from the official Incognia Go client library (github.com/inloco/incognia-go) endpoints, request and response types. Not a provider-published OpenAPI.
+servers:
+- url: https://api.incognia.com/api
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Onboarding
+  description: Signup risk assessment
+paths:
+  /v2/onboarding/signups:
+    post:
+      operationId: registerSignup
+      tags:
+      - Onboarding
+      summary: Register a signup for risk assessment
+      description: Evaluate a new-user onboarding signup and return a risk assessment. Send either an installation_id (mobile SDK) or a request_token (web), plus an optional address to assess address quality and location behavior.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupRequest'
+      responses:
+        '200':
+          description: Signup risk assessment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignupAssessment'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Missing or invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Access token lacks permission for this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Coordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+    SignupAssessment:
+      type: object
+      properties:
+        id:
+          type: string
+        device_id:
+          type: string
+        request_id:
+          type: string
+        risk_assessment:
+          $ref: '#/components/schemas/RiskAssessment'
+        evidence:
+          type: object
+          additionalProperties: true
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+        actions:
+          type: array
+          items:
+            type: string
+        signals:
+          type: object
+          additionalProperties: true
+    RiskAssessment:
+      type: string
+      enum:
+      - low_risk
+      - high_risk
+      - unknown_risk
+      description: Overall risk verdict returned by Incognia.
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
+    PersonID:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+    StructuredAddress:
+      type: object
+      properties:
+        locale:
+          type: string
+        country_name:
+          type: string
+        country_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        borough:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        complements:
+          type: string
+        postal_code:
+          type: string
+    SignupRequest:
+      type: object
+      properties:
+        installation_id:
+          type: string
+        request_token:
+          type: string
+        related_web_request_token:
+          type: string
+        session_token:
+          type: string
+        app_version:
+          type: string
+        device_os:
+          type: string
+        address_line:
+          type: string
+        structured_address:
+          $ref: '#/components/schemas/StructuredAddress'
+        address_coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        account_id:
+          type: string
+        policy_id:
+          type: string
+        external_id:
+          type: string
+        tenant_id:
+          type: string
+        custom_properties:
+          type: object
+          additionalProperties: true
+        person_id:
+          $ref: '#/components/schemas/PersonID'
+    Reason:
+      type: object
+      properties:
+        code:
+          type: string
+        source:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: client_id and client_secret sent as HTTP Basic credentials to the token endpoint.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer access token obtained from POST /v2/token.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client-credentials grant. No scopes are defined; access is scoped by the credential's tenant.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.incognia.com/api/v2/token
+          scopes: {}

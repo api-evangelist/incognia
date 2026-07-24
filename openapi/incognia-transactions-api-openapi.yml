@@ -1,0 +1,294 @@
+openapi: 3.1.0
+info:
+  title: Incognia Authentication Transactions API
+  version: v2
+  description: 'Incognia is a location identity and device fingerprinting platform for fraud prevention. The API returns real-time risk assessments (low_risk, high_risk, unknown_risk) for onboarding signups and authentication transactions (login and payment), and accepts feedback events used to continuously tune the risk model. Assessments combine device recognition signals, location behavior analysis, and tamper detection. Authentication uses OAuth 2.0 client credentials: a client_id and client_secret are exchanged at the token endpoint for a short-lived bearer access token.'
+  contact:
+    name: Incognia Developer Support
+    url: https://developer.incognia.com/
+  x-source: Faithfully reconstructed from the official Incognia Go client library (github.com/inloco/incognia-go) endpoints, request and response types. Not a provider-published OpenAPI.
+servers:
+- url: https://api.incognia.com/api
+  description: Production
+security:
+- bearerAuth: []
+tags:
+- name: Transactions
+  description: Login and payment risk assessment
+paths:
+  /v2/authentication/transactions:
+    post:
+      operationId: registerTransaction
+      tags:
+      - Transactions
+      summary: Register a login or payment transaction for risk assessment
+      description: Evaluate a login or payment transaction and return a risk assessment. Set type to "login" or "payment". Payment transactions may include payment_value, payment_methods and addresses; both accept an account_id to bind the assessment to a known user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+      responses:
+        '200':
+          description: Transaction risk assessment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionAssessment'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Missing or invalid access token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Access token lacks permission for this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    PaymentValue:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+    TransactionRequest:
+      type: object
+      required:
+      - type
+      - account_id
+      properties:
+        type:
+          type: string
+          enum:
+          - login
+          - payment
+        account_id:
+          type: string
+        external_id:
+          type: string
+        tenant_id:
+          type: string
+        policy_id:
+          type: string
+        app_version:
+          type: string
+        device_os:
+          type: string
+        installation_id:
+          type: string
+        session_token:
+          type: string
+        request_token:
+          type: string
+        related_web_request_token:
+          type: string
+        store_id:
+          type: string
+        payment_method_identifier:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionAddress'
+        payment_value:
+          $ref: '#/components/schemas/PaymentValue'
+        payment_methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentMethod'
+        custom_properties:
+          type: object
+          additionalProperties: true
+        person_id:
+          $ref: '#/components/schemas/PersonID'
+        countries:
+          type: array
+          items:
+            type: string
+    Coordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+    RiskAssessment:
+      type: string
+      enum:
+      - low_risk
+      - high_risk
+      - unknown_risk
+      description: Overall risk verdict returned by Incognia.
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
+    PaymentMethod:
+      type: object
+      properties:
+        identifier:
+          type: string
+        type:
+          type: string
+          enum:
+          - account_balance
+          - apple_pay
+          - bancolombia
+          - boleto_bancario
+          - cash
+          - credit_card
+          - credit_card_pos
+          - debit_card
+          - google_pay
+          - meal_voucher
+          - nu_pay
+          - paypal
+          - pix
+          - pix_refund
+          - tef
+          - ted
+        credit_card_info:
+          $ref: '#/components/schemas/CardInfo'
+        debit_card_info:
+          $ref: '#/components/schemas/CardInfo'
+        brand:
+          type: string
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        collected_at:
+          type: string
+          format: date-time
+    PersonID:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+    TransactionAddress:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - shipping
+          - billing
+          - home
+        address_coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        structured_address:
+          $ref: '#/components/schemas/StructuredAddress'
+        address_line:
+          type: string
+    TransactionAssessment:
+      type: object
+      properties:
+        id:
+          type: string
+        risk_assessment:
+          $ref: '#/components/schemas/RiskAssessment'
+        device_id:
+          type: string
+        evidence:
+          type: object
+          additionalProperties: true
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+        actions:
+          type: array
+          items:
+            type: string
+        signals:
+          type: object
+          additionalProperties: true
+    StructuredAddress:
+      type: object
+      properties:
+        locale:
+          type: string
+        country_name:
+          type: string
+        country_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        borough:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        complements:
+          type: string
+        postal_code:
+          type: string
+    CardInfo:
+      type: object
+      properties:
+        bin:
+          type: string
+        last_four_digits:
+          type: string
+        expiry_year:
+          type: string
+        expiry_month:
+          type: string
+    Reason:
+      type: object
+      properties:
+        code:
+          type: string
+        source:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: client_id and client_secret sent as HTTP Basic credentials to the token endpoint.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 bearer access token obtained from POST /v2/token.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 client-credentials grant. No scopes are defined; access is scoped by the credential's tenant.
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.incognia.com/api/v2/token
+          scopes: {}
