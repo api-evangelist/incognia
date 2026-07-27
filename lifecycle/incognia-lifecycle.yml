@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Incognia developer portal (developer.incognia.com), API host behavior, and
+  status subdomain probe.
+versioning:
+  scheme: uri-path
+  current: v2
+  note: >-
+    API endpoints are versioned in the URI path (/api/v2/...). Incognia also
+    versions its client libraries/integration docs separately (v5 is documented
+    as no longer actively maintained; v6+ is current for the SDKs).
+  docs: https://developer.incognia.com/docs/
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No public RFC 8594 Sunset/Deprecation header policy located.
+status_page: https://status.incognia.com/
+status_page_note: >-
+  Status subdomain resolves and is live (returns 403 to automated clients behind
+  bot protection); treated as a published status page.
+sla:
+  url: null
+  uptime_target: null
+deprecated_operations: []

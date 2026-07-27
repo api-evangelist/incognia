@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/incognia-openapi-original.yml
+standards:
+- id: oauth2
+  conforms: true
+  evidence: securityScheme type oauth2 with clientCredentials flow (tokenUrl /v2/token)
+- id: oauth2-client-credentials
+  conforms: true
+  evidence: token endpoint issues bearer tokens via HTTP Basic client_id/client_secret
+- id: bearer-token-http
+  conforms: true
+  evidence: bearerAuth http/bearer scheme applied globally
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors return a bare {message} envelope, not application/problem+json
+- id: oidc
+  conforms: false
+  evidence: no openIdConnect scheme and no /.well-known/openid-configuration (404)
+- id: json-api
+  conforms: false
+- id: rest-json
+  conforms: true
+  evidence: JSON request/response bodies over HTTPS with resource-oriented POST endpoints

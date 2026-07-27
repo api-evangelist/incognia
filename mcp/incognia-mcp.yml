@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: >-
+  Derived from openapi/incognia-openapi-original.yml operations. Incognia
+  publishes no official hosted/remote MCP server as of the generated date; this
+  is a candidate tool surface for building one.
+server:
+  name: incognia
+  transport: http
+tools:
+- name: create_token
+  description: Exchange client_id/client_secret for an OAuth 2.0 bearer access token.
+  source_operation: openapi/incognia-openapi-original.yml#createToken
+- name: register_signup
+  description: Register an onboarding signup and return a low/high/unknown risk assessment.
+  source_operation: openapi/incognia-openapi-original.yml#registerSignup
+- name: register_transaction
+  description: Register a login or payment transaction and return a risk assessment.
+  source_operation: openapi/incognia-openapi-original.yml#registerTransaction
+- name: register_feedback
+  description: Report a labeled feedback event (chargeback, account takeover, accepted/declined) to tune the model.
+  source_operation: openapi/incognia-openapi-original.yml#registerFeedback

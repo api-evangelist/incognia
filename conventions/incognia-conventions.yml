@@ -1,0 +1,47 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  Derived from openapi/incognia-openapi-original.yml and the official Incognia
+  client libraries; enriched from public developer documentation.
+authentication:
+  style: oauth2-client-credentials
+  token_endpoint: https://api.incognia.com/api/v2/token
+  token_grant: client_credentials
+  credential_transport: http-basic
+  access_token: bearer
+  token_lifetime: short-lived (expires_in returned with each token, typically ~10 minutes)
+  detail: >-
+    Exchange client_id/client_secret via HTTP Basic auth at POST /v2/token for a
+    bearer access token; send it as Authorization: Bearer <token> on all API
+    calls. SDKs auto-refresh the token before expiry.
+  cross_ref: authentication/incognia-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    Incognia publishes no idempotency-key header. De-duplication is instead keyed
+    on the client-supplied installation_id / request_token / external_id that
+    identify the device, session, and account for an assessment.
+pagination:
+  supported: false
+  note: The API is transactional (POST assessments and feedback); it exposes no list endpoints.
+identifiers:
+  request_correlation: >-
+    Assessment responses carry an "id" (assessment id) and "request_id" that can
+    be referenced later via feedback (login_id / payment_id / signup_id).
+  device_identity: installation_id (mobile SDK) or request_token (web SDK)
+  account_binding: account_id and/or external_id
+  multi_tenant: tenant_id and policy_id select the evaluating tenant and rule policy
+versioning:
+  style: uri-path
+  current: v2
+  cross_ref: lifecycle/incognia-lifecycle.yml
+error_envelope:
+  shape: '{ "message": string }'
+  content_type: application/json
+  format: non-rfc9457
+  cross_ref: errors/incognia-problem-types.yml
+rate_limiting:
+  signal: not publicly documented
+custom_properties:
+  supported: true
+  note: Signup, transaction, and feedback requests accept a free-form custom_properties object.

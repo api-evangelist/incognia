@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: Live probes of /.well-known/ paths on Incognia API and website hosts.
+hosts:
+- host: https://api.incognia.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://www.incognia.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+notes: >-
+  No /.well-known/ discovery documents are published on the API or website hosts
+  as of the probe date. Absence recorded as valid data.

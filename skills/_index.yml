@@ -1,0 +1,18 @@
+generated: '2026-07-19'
+method: generated
+source: >-
+  Generated from openapi/incognia-openapi-original.yml operations and
+  conventions/incognia-conventions.yml. Grounded in real operationIds.
+skills:
+- file: incognia-assess-onboarding-signup.md
+  name: Assess an onboarding signup for fraud
+  api: openapi/incognia-openapi-original.yml
+  operations: [createToken, registerSignup]
+- file: incognia-assess-transaction.md
+  name: Assess a login or payment transaction
+  api: openapi/incognia-openapi-original.yml
+  operations: [createToken, registerTransaction]
+- file: incognia-report-feedback.md
+  name: Report a feedback event to tune the model
+  api: openapi/incognia-openapi-original.yml
+  operations: [createToken, registerFeedback]

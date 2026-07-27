@@ -1,0 +1,20 @@
+{
+  "provider": "incognia",
+  "sources": [
+    "incognia-authentication-api-openapi.yml",
+    "incognia-feedback-api-openapi.yml",
+    "incognia-onboarding-api-openapi.yml",
+    "incognia-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "incognia-authentication-api-openapi.yml",
+    "incognia-feedback-api-openapi.yml",
+    "incognia-onboarding-api-openapi.yml",
+    "incognia-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

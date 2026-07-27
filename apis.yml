@@ -1,8 +1,17 @@
 aid: incognia
 name: Incognia
-description: 'Incognia is a company surfaced as a portfolio company of bessemer-venture-partners and added
-  to the API Evangelist network as a stub for enrichment. Sector: cybersecurity. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: >-
+  Incognia is a location identity and device fingerprinting platform for fraud
+  prevention, providing real-time risk assessments for user onboarding, login,
+  and payment transactions. Its API returns low_risk / high_risk / unknown_risk
+  verdicts by combining privacy-first device recognition, location behavior
+  analysis, and tamper detection, and accepts feedback events (chargebacks,
+  account takeover, identity fraud, accepted/declined outcomes) that continuously
+  tune the risk model. Incognia is used across financial services, fintech,
+  marketplaces, delivery, and gaming to stop account takeover, new-account fraud,
+  and payment fraud while reducing friction for trusted users. Authentication is
+  OAuth 2.0 client credentials, exchanged for short-lived bearer tokens; official
+  SDKs ship for Node.js, Python, Ruby, Java, and Go.
 url: https://raw.githubusercontent.com/api-evangelist/incognia/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +19,176 @@ x-backed-by:
 - bessemer-venture-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Cybersecurity
-apis: []
+- Fraud Prevention
+- Device Fingerprinting
+- Location Identity
+- Identity Verification
+- Risk Assessment
+- Authentication
+- Fintech
+- Anti-Fraud
+image: https://www.incognia.com/hubfs/incognia-logo.svg
+apis:
+- aid: incognia:incognia-authentication-api
+  name: Incognia Authentication API
+  description: OAuth 2.0 client-credentials token exchange
+  humanURL: https://developer.incognia.com/docs/
+  baseURL: https://api.incognia.com/api
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/incognia-authentication-api-openapi.yml
+  - type: Authentication
+    url: authentication/incognia-authentication.yml
+  - type: ErrorCatalog
+    url: errors/incognia-problem-types.yml
+  - type: Conventions
+    url: conventions/incognia-conventions.yml
+  - type: DataModel
+    url: data-model/incognia-data-model.yml
+  - type: AgenticAccess
+    url: agentic-access/incognia-agentic-access.yml
+- aid: incognia:incognia-feedback-api
+  name: Incognia Feedback API
+  description: Report labeled events to tune the risk model
+  humanURL: https://developer.incognia.com/docs/
+  baseURL: https://api.incognia.com/api
+  tags:
+  - Feedback
+  properties:
+  - type: OpenAPI
+    url: openapi/incognia-feedback-api-openapi.yml
+  - type: Authentication
+    url: authentication/incognia-authentication.yml
+  - type: ErrorCatalog
+    url: errors/incognia-problem-types.yml
+  - type: Conventions
+    url: conventions/incognia-conventions.yml
+  - type: DataModel
+    url: data-model/incognia-data-model.yml
+  - type: AgenticAccess
+    url: agentic-access/incognia-agentic-access.yml
+- aid: incognia:incognia-onboarding-api
+  name: Incognia Onboarding API
+  description: Signup risk assessment
+  humanURL: https://developer.incognia.com/docs/
+  baseURL: https://api.incognia.com/api
+  tags:
+  - Onboarding
+  properties:
+  - type: OpenAPI
+    url: openapi/incognia-onboarding-api-openapi.yml
+  - type: Authentication
+    url: authentication/incognia-authentication.yml
+  - type: ErrorCatalog
+    url: errors/incognia-problem-types.yml
+  - type: Conventions
+    url: conventions/incognia-conventions.yml
+  - type: DataModel
+    url: data-model/incognia-data-model.yml
+  - type: AgenticAccess
+    url: agentic-access/incognia-agentic-access.yml
+- aid: incognia:incognia-transactions-api
+  name: Incognia Transactions API
+  description: Login and payment risk assessment
+  humanURL: https://developer.incognia.com/docs/
+  baseURL: https://api.incognia.com/api
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/incognia-transactions-api-openapi.yml
+  - type: Authentication
+    url: authentication/incognia-authentication.yml
+  - type: ErrorCatalog
+    url: errors/incognia-problem-types.yml
+  - type: Conventions
+    url: conventions/incognia-conventions.yml
+  - type: DataModel
+    url: data-model/incognia-data-model.yml
+  - type: AgenticAccess
+    url: agentic-access/incognia-agentic-access.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: OAuthScopes
+  url: scopes/incognia-scopes.yml
 - type: Website
   url: https://www.incognia.com/
+- type: DeveloperPortal
+  url: https://developer.incognia.com/
+- type: Documentation
+  url: https://developer.incognia.com/docs/
+- type: APIReference
+  url: https://developer.incognia.com/docs/us/v5/apis/
+- type: GettingStarted
+  url: https://developer.incognia.com/docs/us/v5/apis/incognia-libraries/
+- type: Blog
+  url: https://www.incognia.com/blog
+- type: Pricing
+  url: https://www.incognia.com/pricing
+- type: TermsOfService
+  url: https://www.incognia.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.incognia.com/policies/
+- type: GitHubOrganization
+  url: https://github.com/inloco
+- type: TrustCenter
+  url: https://trust.incognia.com/
+- type: Packages
+  url: packages/incognia-packages.yml
+- type: SDKs
+  url: packages/incognia-packages.yml
+- type: Authentication
+  url: authentication/incognia-authentication.yml
+- type: MCPServer
+  url: mcp/incognia-mcp.yml
+- type: LLMsTxt
+  url: llms/incognia-llms.txt
+- type: WellKnown
+  url: well-known/incognia-well-known.yml
+- type: Conformance
+  url: conformance/incognia-conformance.yml
+- type: ErrorCatalog
+  url: errors/incognia-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/incognia-lifecycle.yml
+- type: StatusPage
+  url: https://status.incognia.com/
+- type: Conventions
+  url: conventions/incognia-conventions.yml
+- type: DataModel
+  url: data-model/incognia-data-model.yml
+- type: DomainSecurity
+  url: security/incognia-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/incognia-agentic-access.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

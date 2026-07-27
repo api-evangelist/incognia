@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Incognia API
+  version: 1.0.0
+extends: openapi/incognia-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-19'
+    x-api-category: fraud-prevention
+    x-auth-model: oauth2-client-credentials
+    x-provider: incognia
+- target: $.paths['/v2/onboarding/signups'].post
+  update:
+    x-marquee-flow: onboarding-risk-assessment
+- target: $.paths['/v2/authentication/transactions'].post
+  update:
+    x-marquee-flow: transaction-risk-assessment
+- target: $.paths['/v2/feedbacks'].post
+  update:
+    x-marquee-flow: feedback-loop

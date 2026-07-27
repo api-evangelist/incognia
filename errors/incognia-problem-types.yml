@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/incognia-openapi-original.yml
+format: json
+envelope:
+  field: message
+  content_type: application/json
+  note: >-
+    Incognia returns a bare JSON error envelope of the form {"message": "..."}
+    (not RFC 9457 application/problem+json). Verified live against
+    POST https://api.incognia.com/api/v2/token which returned 400
+    {"message":"missing credentials"}.
+problems:
+- status: 400
+  title: Bad request
+  detail: Missing or invalid request parameters (for example missing credentials at the token endpoint).
+  example_message: missing credentials
+  source_operations:
+  - openapi/incognia-openapi-original.yml#createToken
+  - openapi/incognia-openapi-original.yml#registerSignup
+  - openapi/incognia-openapi-original.yml#registerTransaction
+  - openapi/incognia-openapi-original.yml#registerFeedback
+- status: 401
+  title: Unauthorized
+  detail: Missing or invalid credentials / access token.
+  example_message: invalid credentials
+  source_operations:
+  - openapi/incognia-openapi-original.yml#createToken
+  - openapi/incognia-openapi-original.yml#registerSignup
+  - openapi/incognia-openapi-original.yml#registerTransaction
+- status: 403
+  title: Forbidden
+  detail: The access token is valid but not permitted for the requested resource or tenant.
+  source_operations:
+  - openapi/incognia-openapi-original.yml#registerSignup
+  - openapi/incognia-openapi-original.yml#registerTransaction

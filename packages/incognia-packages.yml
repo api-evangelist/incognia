@@ -1,0 +1,45 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  Public package registries (npm, PyPI, RubyGems, Maven Central, Go modules) and
+  the Incognia GitHub org (github.com/inloco).
+packages:
+- language: javascript
+  registry: npm
+  name: "@incognia/api"
+  version: 7.0.1
+  url: https://www.npmjs.com/package/@incognia/api
+  repository: https://github.com/inloco/incognia-node
+  install: npm install @incognia/api
+  official: true
+- language: python
+  registry: pypi
+  name: incognia-python
+  version: 3.7.1
+  url: https://pypi.org/project/incognia-python/
+  repository: https://github.com/inloco/incognia-python
+  install: pip install incognia-python
+  official: true
+- language: ruby
+  registry: rubygems
+  name: incognia_api
+  version: 4.0.0
+  url: https://rubygems.org/gems/incognia_api
+  repository: https://github.com/inloco/incognia-ruby
+  install: gem install incognia_api
+  official: true
+- language: java
+  registry: maven-central
+  name: com.incognia:incognia-api-client
+  version: 1.1.0
+  url: https://central.sonatype.com/artifact/com.incognia/incognia-api-client
+  repository: https://github.com/inloco/incognia-api-java
+  install: "implementation 'com.incognia:incognia-api-client:1.1.0'"
+  official: true
+- language: go
+  registry: go-modules
+  name: github.com/inloco/incognia-go
+  url: https://pkg.go.dev/github.com/inloco/incognia-go
+  repository: https://github.com/inloco/incognia-go
+  install: go get github.com/inloco/incognia-go
+  official: true

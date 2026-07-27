@@ -1,0 +1,35 @@
+# Incognia
+
+> Incognia is a location identity and device fingerprinting platform for fraud prevention. Its API returns real-time risk assessments (low_risk / high_risk / unknown_risk) for onboarding signups and login/payment transactions, and accepts feedback events that tune the risk model. Authentication is OAuth 2.0 client credentials exchanged for short-lived bearer tokens. Official SDKs ship for Node.js, Python, Ruby, Java, and Go.
+
+## APIs
+
+- [Incognia API](https://developer.incognia.com/docs/): Real-time fraud-prevention risk assessment. Base URL https://api.incognia.com/api.
+
+## Specs
+
+- [OpenAPI (reconstructed)](https://raw.githubusercontent.com/api-evangelist/incognia/refs/heads/main/openapi/incognia-openapi-original.yml)
+
+## Endpoints
+
+- POST /v2/token — Exchange client_id/client_secret (HTTP Basic) for a bearer access token.
+- POST /v2/onboarding/signups — Assess a new-user onboarding signup.
+- POST /v2/authentication/transactions — Assess a login or payment transaction (set type: login|payment).
+- POST /v2/feedbacks — Report a labeled event (account_takeover, chargeback, signup_accepted, payment_declined, ...).
+
+## Docs
+
+- [Developer Portal](https://developer.incognia.com/)
+- [API Reference](https://developer.incognia.com/docs/us/v5/apis/)
+- [Client Libraries](https://developer.incognia.com/docs/us/v5/apis/incognia-libraries/)
+- [Pricing](https://www.incognia.com/pricing)
+- [Blog](https://www.incognia.com/blog)
+- [Trust Center](https://trust.incognia.com/)
+
+## SDKs
+
+- [Node.js @incognia/api](https://www.npmjs.com/package/@incognia/api)
+- [Python incognia-python](https://pypi.org/project/incognia-python/)
+- [Ruby incognia_api](https://rubygems.org/gems/incognia_api)
+- [Java com.incognia:incognia-api-client](https://central.sonatype.com/artifact/com.incognia/incognia-api-client)
+- [Go inloco/incognia-go](https://pkg.go.dev/github.com/inloco/incognia-go)

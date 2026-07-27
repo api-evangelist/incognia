@@ -1,0 +1,55 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/incognia-openapi-original.yml
+entities:
+- name: SignupAssessment
+  operation: registerSignup
+  key: id
+  fields: [id, device_id, request_id, risk_assessment, evidence, reasons, actions, signals]
+- name: TransactionAssessment
+  operation: registerTransaction
+  key: id
+  fields: [id, device_id, risk_assessment, evidence, reasons, actions, signals]
+  variants: [login, payment]
+- name: Feedback
+  operation: registerFeedback
+  key: event
+  fields: [event, occurred_at, expires_at, installation_id, request_token, login_id, payment_id, signup_id, account_id, external_id, person_id]
+- name: AccessToken
+  operation: createToken
+  fields: [access_token, expires_in, token_type]
+- name: PaymentMethod
+  embedded_in: TransactionAssessment
+  fields: [identifier, type, credit_card_info, debit_card_info, brand]
+- name: Address
+  embedded_in: [SignupAssessment, TransactionAssessment]
+  fields: [type, address_line, structured_address, address_coordinates]
+relationships:
+- from: Feedback
+  to: SignupAssessment
+  type: belongs_to
+  via: signup_id
+- from: Feedback
+  to: TransactionAssessment
+  type: belongs_to
+  via: login_id / payment_id
+- from: SignupAssessment
+  to: Account
+  type: belongs_to
+  via: account_id / external_id
+- from: TransactionAssessment
+  to: Account
+  type: belongs_to
+  via: account_id / external_id
+- from: TransactionAssessment
+  to: PaymentMethod
+  type: has_many
+  via: payment_methods
+- from: Assessment
+  to: Device
+  type: belongs_to
+  via: device_id / installation_id
+notes: >-
+  Incognia has no CRUD/list resources; the model is an event graph where labeled
+  Feedback events reference prior signup/login/payment assessments by their ids,
+  and every assessment is bound to a device and (optionally) an account.
