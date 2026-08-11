@@ -133,6 +133,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/incognia-openapi-overlay.yaml
 - type: OAuthScopes
   url: scopes/incognia-scopes.yml
 - type: Website
