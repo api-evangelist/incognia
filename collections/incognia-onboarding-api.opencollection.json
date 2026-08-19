@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Incognia Authentication Onboarding API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Onboarding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a signup for risk assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.incognia.com/api/v2/onboarding/signups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluate a new-user onboarding signup and return a risk assessment. Send either an installation_id (mobile SDK) or a request_token (web), plus an optional address to assess address quality and location behavior."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

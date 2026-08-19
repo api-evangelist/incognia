@@ -1,10 +1,8 @@
 generated: '2026-07-19'
 method: derived
 status: candidate
-source: >-
-  Derived from openapi/incognia-openapi-original.yml operations. Incognia
-  publishes no official hosted/remote MCP server as of the generated date; this
-  is a candidate tool surface for building one.
+source: Derived from openapi/incognia-openapi-original.yml operations. Incognia publishes no official
+  hosted/remote MCP server as of the generated date; this is a candidate tool surface for building one.
 server:
   name: incognia
   transport: http
@@ -19,5 +17,12 @@ tools:
   description: Register a login or payment transaction and return a risk assessment.
   source_operation: openapi/incognia-openapi-original.yml#registerTransaction
 - name: register_feedback
-  description: Report a labeled feedback event (chargeback, account takeover, accepted/declined) to tune the model.
+  description: Report a labeled feedback event (chargeback, account takeover, accepted/declined) to tune
+    the model.
   source_operation: openapi/incognia-openapi-original.yml#registerFeedback
+deployment:
+  mode: none
+  verified: derived
+  tools: 4
+  checked: '2026-08-12'
+  source: catalog MCP census

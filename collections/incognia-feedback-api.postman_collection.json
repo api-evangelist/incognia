@@ -1,0 +1,242 @@
+{
+  "item": [
+    {
+      "id": "5a9044aa-b3f7-4021-b249-c7e7f31e22d8",
+      "name": "Feedback",
+      "description": {
+        "content": "Report labeled events to tune the risk model",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c58eaed-5ab3-46a1-922f-6c38e2dea970",
+          "name": "Register a feedback event",
+          "request": {
+            "name": "Register a feedback event",
+            "description": {
+              "content": "Report a labeled event (for example account_takeover, chargeback, signup_accepted, payment_declined) tied to an assessment or account so Incognia can tune its risk model. Identify the subject with any of installation_id, request_token, login_id, payment_id, signup_id, account_id or external_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "feedbacks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<string>\",\n  \"occurred_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"login_id\": \"<string>\",\n  \"payment_id\": \"<string>\",\n  \"signup_id\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"person_id\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73957603-c4d5-44ea-baac-5487749e3279",
+              "name": "Feedback accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "feedbacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"occurred_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"login_id\": \"<string>\",\n  \"payment_id\": \"<string>\",\n  \"signup_id\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ed60f4a0-407f-4df6-b994-caa9421cefe9",
+              "name": "Invalid feedback parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "feedbacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"occurred_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"login_id\": \"<string>\",\n  \"payment_id\": \"<string>\",\n  \"signup_id\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5a1cce8-e817-4762-8270-96e0f90ec75a",
+              "name": "Missing or invalid access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "feedbacks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\",\n  \"occurred_at\": \"<dateTime>\",\n  \"expires_at\": \"<dateTime>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"login_id\": \"<string>\",\n  \"payment_id\": \"<string>\",\n  \"signup_id\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.incognia.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9c44f57c-52ea-429b-9481-17650f0698dd",
+    "name": "Incognia Authentication Feedback API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Incognia is a location identity and device fingerprinting platform for fraud prevention. The API returns real-time risk assessments (low_risk, high_risk, unknown_risk) for onboarding signups and authentication transactions (login and payment), and accepts feedback events used to continuously tune the risk model. Assessments combine device recognition signals, location behavior analysis, and tamper detection. Authentication uses OAuth 2.0 client credentials: a client_id and client_secret are exchanged at the token endpoint for a short-lived bearer access token.\n\nContact Support:\n Name: Incognia Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

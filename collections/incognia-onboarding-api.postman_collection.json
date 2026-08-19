@@ -1,0 +1,303 @@
+{
+  "item": [
+    {
+      "id": "0d7e562e-1e81-434e-9bc9-1af9263eccae",
+      "name": "Onboarding",
+      "description": {
+        "content": "Signup risk assessment",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e37f889-695f-49fb-99cb-3673af416643",
+          "name": "Register a signup for risk assessment",
+          "request": {
+            "name": "Register a signup for risk assessment",
+            "description": {
+              "content": "Evaluate a new-user onboarding signup and return a risk assessment. Send either an installation_id (mobile SDK) or a request_token (web), plus an optional address to assess address quality and location behavior.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "onboarding",
+                "signups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"installation_id\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"address_line\": \"<string>\",\n  \"structured_address\": {\n    \"locale\": \"<string>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"state\": \"<string>\",\n    \"city\": \"<string>\",\n    \"county\": \"<string>\",\n    \"borough\": \"<string>\",\n    \"neighborhood\": \"<string>\",\n    \"street\": \"<string>\",\n    \"number\": \"<string>\",\n    \"complements\": \"<string>\",\n    \"postal_code\": \"<string>\"\n  },\n  \"address_coordinates\": {\n    \"lat\": \"<double>\",\n    \"lng\": \"<double>\"\n  },\n  \"account_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"custom_properties\": {\n    \"key_0\": 8522.441793233516,\n    \"key_1\": false\n  },\n  \"person_id\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67f2eba5-38dc-4b23-89c0-ebc23d252e0e",
+              "name": "Signup risk assessment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    "signups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"installation_id\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"address_line\": \"<string>\",\n  \"structured_address\": {\n    \"locale\": \"string\",\n    \"country_name\": \"string\",\n    \"country_code\": \"string\",\n    \"state\": \"string\",\n    \"city\": \"string\",\n    \"county\": \"string\",\n    \"borough\": \"string\",\n    \"neighborhood\": \"string\",\n    \"street\": \"string\",\n    \"number\": \"string\",\n    \"complements\": \"string\",\n    \"postal_code\": \"string\"\n  },\n  \"address_coordinates\": {\n    \"lat\": 5818.403263003625,\n    \"lng\": 4374.954675196726\n  },\n  \"account_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"custom_properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"device_id\": \"string\",\n  \"request_id\": \"string\",\n  \"risk_assessment\": \"low_risk\",\n  \"evidence\": {\n    \"key_0\": \"string\",\n    \"key_1\": false\n  },\n  \"reasons\": [\n    {\n      \"code\": \"string\",\n      \"source\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"source\": \"string\"\n    }\n  ],\n  \"actions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"signals\": {\n    \"key_0\": 9609.05784480652\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5be3bd7c-7760-410e-9b9a-5bcbfcb564ce",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    "signups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"installation_id\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"address_line\": \"<string>\",\n  \"structured_address\": {\n    \"locale\": \"string\",\n    \"country_name\": \"string\",\n    \"country_code\": \"string\",\n    \"state\": \"string\",\n    \"city\": \"string\",\n    \"county\": \"string\",\n    \"borough\": \"string\",\n    \"neighborhood\": \"string\",\n    \"street\": \"string\",\n    \"number\": \"string\",\n    \"complements\": \"string\",\n    \"postal_code\": \"string\"\n  },\n  \"address_coordinates\": {\n    \"lat\": 5818.403263003625,\n    \"lng\": 4374.954675196726\n  },\n  \"account_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"custom_properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56b15c5c-c7d6-416e-8c2d-424396eab193",
+              "name": "Missing or invalid access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    "signups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"installation_id\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"address_line\": \"<string>\",\n  \"structured_address\": {\n    \"locale\": \"string\",\n    \"country_name\": \"string\",\n    \"country_code\": \"string\",\n    \"state\": \"string\",\n    \"city\": \"string\",\n    \"county\": \"string\",\n    \"borough\": \"string\",\n    \"neighborhood\": \"string\",\n    \"street\": \"string\",\n    \"number\": \"string\",\n    \"complements\": \"string\",\n    \"postal_code\": \"string\"\n  },\n  \"address_coordinates\": {\n    \"lat\": 5818.403263003625,\n    \"lng\": 4374.954675196726\n  },\n  \"account_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"custom_properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0ccbf7c-5120-48d8-b243-c74b7b55eede",
+              "name": "Access token lacks permission for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "onboarding",
+                    "signups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"installation_id\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"address_line\": \"<string>\",\n  \"structured_address\": {\n    \"locale\": \"string\",\n    \"country_name\": \"string\",\n    \"country_code\": \"string\",\n    \"state\": \"string\",\n    \"city\": \"string\",\n    \"county\": \"string\",\n    \"borough\": \"string\",\n    \"neighborhood\": \"string\",\n    \"street\": \"string\",\n    \"number\": \"string\",\n    \"complements\": \"string\",\n    \"postal_code\": \"string\"\n  },\n  \"address_coordinates\": {\n    \"lat\": 5818.403263003625,\n    \"lng\": 4374.954675196726\n  },\n  \"account_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"custom_properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.incognia.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7c12adac-074b-4329-9b4d-86ebd15603b6",
+    "name": "Incognia Authentication Onboarding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Incognia is a location identity and device fingerprinting platform for fraud prevention. The API returns real-time risk assessments (low_risk, high_risk, unknown_risk) for onboarding signups and authentication transactions (login and payment), and accepts feedback events used to continuously tune the risk model. Assessments combine device recognition signals, location behavior analysis, and tamper detection. Authentication uses OAuth 2.0 client credentials: a client_id and client_secret are exchanged at the token endpoint for a short-lived bearer access token.\n\nContact Support:\n Name: Incognia Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

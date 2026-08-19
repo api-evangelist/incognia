@@ -1,0 +1,262 @@
+{
+  "item": [
+    {
+      "id": "f581ada2-267d-4bb8-b55b-cdbd37f08ceb",
+      "name": "Authentication",
+      "description": {
+        "content": "OAuth 2.0 client-credentials token exchange",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5127c52b-04d5-4b34-9724-bef8fe5a6cb7",
+          "name": "Create an access token",
+          "request": {
+            "name": "Create an access token",
+            "description": {
+              "content": "Exchange client_id and client_secret (sent via HTTP Basic auth) for a short-lived OAuth 2.0 bearer access token using the client_credentials grant. Send Content-Type application/x-www-form-urlencoded.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "grant_type",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1440a6a0-cd10-4280-80ba-d1eed878ca79",
+              "name": "Access token issued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"string\",\n  \"expires_in\": \"600\",\n  \"token_type\": \"Bearer\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2aa06a0-f911-4fc2-9568-ac1842844a68",
+              "name": "Missing credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a88ff002-8d8d-468e-b438-fd8bf2bdce64",
+              "name": "Invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "grant_type",
+                      "value": "client_credentials"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.incognia.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6e10282e-6c77-4a2b-bc35-f4e03a8f1ac7",
+    "name": "Incognia Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Incognia is a location identity and device fingerprinting platform for fraud prevention. The API returns real-time risk assessments (low_risk, high_risk, unknown_risk) for onboarding signups and authentication transactions (login and payment), and accepts feedback events used to continuously tune the risk model. Assessments combine device recognition signals, location behavior analysis, and tamper detection. Authentication uses OAuth 2.0 client credentials: a client_id and client_secret are exchanged at the token endpoint for a short-lived bearer access token.\n\nContact Support:\n Name: Incognia Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

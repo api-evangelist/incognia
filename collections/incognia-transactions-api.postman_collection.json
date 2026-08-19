@@ -1,0 +1,303 @@
+{
+  "item": [
+    {
+      "id": "2df7d07e-22f6-4956-bbbf-9de6baf50934",
+      "name": "Transactions",
+      "description": {
+        "content": "Login and payment risk assessment",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a67c0b8b-529e-4270-904c-3fe1efe24c74",
+          "name": "Register a login or payment transaction for risk assessment",
+          "request": {
+            "name": "Register a login or payment transaction for risk assessment",
+            "description": {
+              "content": "Evaluate a login or payment transaction and return a risk assessment. Set type to \"login\" or \"payment\". Payment transactions may include payment_value, payment_methods and addresses; both accept an account_id to bind the assessment to a known user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "authentication",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"store_id\": \"<string>\",\n  \"payment_method_identifier\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<double>\",\n    \"longitude\": \"<double>\",\n    \"collected_at\": \"<dateTime>\"\n  },\n  \"addresses\": [\n    {\n      \"type\": \"<string>\",\n      \"address_coordinates\": {\n        \"lat\": \"<double>\",\n        \"lng\": \"<double>\"\n      },\n      \"structured_address\": {\n        \"locale\": \"<string>\",\n        \"country_name\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"state\": \"<string>\",\n        \"city\": \"<string>\",\n        \"county\": \"<string>\",\n        \"borough\": \"<string>\",\n        \"neighborhood\": \"<string>\",\n        \"street\": \"<string>\",\n        \"number\": \"<string>\",\n        \"complements\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"address_line\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"address_coordinates\": {\n        \"lat\": \"<double>\",\n        \"lng\": \"<double>\"\n      },\n      \"structured_address\": {\n        \"locale\": \"<string>\",\n        \"country_name\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"state\": \"<string>\",\n        \"city\": \"<string>\",\n        \"county\": \"<string>\",\n        \"borough\": \"<string>\",\n        \"neighborhood\": \"<string>\",\n        \"street\": \"<string>\",\n        \"number\": \"<string>\",\n        \"complements\": \"<string>\",\n        \"postal_code\": \"<string>\"\n      },\n      \"address_line\": \"<string>\"\n    }\n  ],\n  \"payment_value\": {\n    \"amount\": \"<double>\",\n    \"currency\": \"<string>\"\n  },\n  \"payment_methods\": [\n    {\n      \"identifier\": \"<string>\",\n      \"type\": \"<string>\",\n      \"credit_card_info\": {\n        \"bin\": \"<string>\",\n        \"last_four_digits\": \"<string>\",\n        \"expiry_year\": \"<string>\",\n        \"expiry_month\": \"<string>\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"<string>\",\n        \"last_four_digits\": \"<string>\",\n        \"expiry_year\": \"<string>\",\n        \"expiry_month\": \"<string>\"\n      },\n      \"brand\": \"<string>\"\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"type\": \"<string>\",\n      \"credit_card_info\": {\n        \"bin\": \"<string>\",\n        \"last_four_digits\": \"<string>\",\n        \"expiry_year\": \"<string>\",\n        \"expiry_month\": \"<string>\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"<string>\",\n        \"last_four_digits\": \"<string>\",\n        \"expiry_year\": \"<string>\",\n        \"expiry_month\": \"<string>\"\n      },\n      \"brand\": \"<string>\"\n    }\n  ],\n  \"custom_properties\": {\n    \"key_0\": true,\n    \"key_1\": false\n  },\n  \"person_id\": {\n    \"type\": \"<string>\",\n    \"value\": \"<string>\"\n  },\n  \"countries\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df8cc708-dffc-4725-b4f3-9592f646b4a5",
+              "name": "Transaction risk assessment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authentication",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"store_id\": \"<string>\",\n  \"payment_method_identifier\": \"<string>\",\n  \"location\": {\n    \"latitude\": 5351.341068759086,\n    \"longitude\": 9980.612199300425,\n    \"collected_at\": \"2021-01-21T01:15:40.627Z\"\n  },\n  \"addresses\": [\n    {\n      \"type\": \"billing\",\n      \"address_coordinates\": {\n        \"lat\": 2954.5068858512836,\n        \"lng\": 4793.9678060940305\n      },\n      \"structured_address\": {\n        \"locale\": \"string\",\n        \"country_name\": \"string\",\n        \"country_code\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"borough\": \"string\",\n        \"neighborhood\": \"string\",\n        \"street\": \"string\",\n        \"number\": \"string\",\n        \"complements\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"address_line\": \"string\"\n    },\n    {\n      \"type\": \"shipping\",\n      \"address_coordinates\": {\n        \"lat\": 662.8055273096655,\n        \"lng\": 9807.422502289017\n      },\n      \"structured_address\": {\n        \"locale\": \"string\",\n        \"country_name\": \"string\",\n        \"country_code\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"borough\": \"string\",\n        \"neighborhood\": \"string\",\n        \"street\": \"string\",\n        \"number\": \"string\",\n        \"complements\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"address_line\": \"string\"\n    }\n  ],\n  \"payment_value\": {\n    \"amount\": 2954.569054947097,\n    \"currency\": \"string\"\n  },\n  \"payment_methods\": [\n    {\n      \"identifier\": \"string\",\n      \"type\": \"cash\",\n      \"credit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"brand\": \"string\"\n    },\n    {\n      \"identifier\": \"string\",\n      \"type\": \"meal_voucher\",\n      \"credit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"brand\": \"string\"\n    }\n  ],\n  \"custom_properties\": {\n    \"key_0\": 2763,\n    \"key_1\": 563.6657355845731,\n    \"key_2\": 8784.960682227489\n  },\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  },\n  \"countries\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"risk_assessment\": \"unknown_risk\",\n  \"device_id\": \"string\",\n  \"evidence\": {\n    \"key_0\": 7510.650110379032,\n    \"key_1\": true\n  },\n  \"reasons\": [\n    {\n      \"code\": \"string\",\n      \"source\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"source\": \"string\"\n    }\n  ],\n  \"actions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"signals\": {\n    \"key_0\": 1071,\n    \"key_1\": 5454.735055200523\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13fb80d9-15d4-42ad-bfa1-78e72adedec4",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authentication",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"store_id\": \"<string>\",\n  \"payment_method_identifier\": \"<string>\",\n  \"location\": {\n    \"latitude\": 5351.341068759086,\n    \"longitude\": 9980.612199300425,\n    \"collected_at\": \"2021-01-21T01:15:40.627Z\"\n  },\n  \"addresses\": [\n    {\n      \"type\": \"billing\",\n      \"address_coordinates\": {\n        \"lat\": 2954.5068858512836,\n        \"lng\": 4793.9678060940305\n      },\n      \"structured_address\": {\n        \"locale\": \"string\",\n        \"country_name\": \"string\",\n        \"country_code\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"borough\": \"string\",\n        \"neighborhood\": \"string\",\n        \"street\": \"string\",\n        \"number\": \"string\",\n        \"complements\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"address_line\": \"string\"\n    },\n    {\n      \"type\": \"shipping\",\n      \"address_coordinates\": {\n        \"lat\": 662.8055273096655,\n        \"lng\": 9807.422502289017\n      },\n      \"structured_address\": {\n        \"locale\": \"string\",\n        \"country_name\": \"string\",\n        \"country_code\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"borough\": \"string\",\n        \"neighborhood\": \"string\",\n        \"street\": \"string\",\n        \"number\": \"string\",\n        \"complements\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"address_line\": \"string\"\n    }\n  ],\n  \"payment_value\": {\n    \"amount\": 2954.569054947097,\n    \"currency\": \"string\"\n  },\n  \"payment_methods\": [\n    {\n      \"identifier\": \"string\",\n      \"type\": \"cash\",\n      \"credit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"brand\": \"string\"\n    },\n    {\n      \"identifier\": \"string\",\n      \"type\": \"meal_voucher\",\n      \"credit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"brand\": \"string\"\n    }\n  ],\n  \"custom_properties\": {\n    \"key_0\": 2763,\n    \"key_1\": 563.6657355845731,\n    \"key_2\": 8784.960682227489\n  },\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  },\n  \"countries\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "926696f0-fbb4-48a1-84fa-9f175d351a3e",
+              "name": "Missing or invalid access token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authentication",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"store_id\": \"<string>\",\n  \"payment_method_identifier\": \"<string>\",\n  \"location\": {\n    \"latitude\": 5351.341068759086,\n    \"longitude\": 9980.612199300425,\n    \"collected_at\": \"2021-01-21T01:15:40.627Z\"\n  },\n  \"addresses\": [\n    {\n      \"type\": \"billing\",\n      \"address_coordinates\": {\n        \"lat\": 2954.5068858512836,\n        \"lng\": 4793.9678060940305\n      },\n      \"structured_address\": {\n        \"locale\": \"string\",\n        \"country_name\": \"string\",\n        \"country_code\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"borough\": \"string\",\n        \"neighborhood\": \"string\",\n        \"street\": \"string\",\n        \"number\": \"string\",\n        \"complements\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"address_line\": \"string\"\n    },\n    {\n      \"type\": \"shipping\",\n      \"address_coordinates\": {\n        \"lat\": 662.8055273096655,\n        \"lng\": 9807.422502289017\n      },\n      \"structured_address\": {\n        \"locale\": \"string\",\n        \"country_name\": \"string\",\n        \"country_code\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"borough\": \"string\",\n        \"neighborhood\": \"string\",\n        \"street\": \"string\",\n        \"number\": \"string\",\n        \"complements\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"address_line\": \"string\"\n    }\n  ],\n  \"payment_value\": {\n    \"amount\": 2954.569054947097,\n    \"currency\": \"string\"\n  },\n  \"payment_methods\": [\n    {\n      \"identifier\": \"string\",\n      \"type\": \"cash\",\n      \"credit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"brand\": \"string\"\n    },\n    {\n      \"identifier\": \"string\",\n      \"type\": \"meal_voucher\",\n      \"credit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"brand\": \"string\"\n    }\n  ],\n  \"custom_properties\": {\n    \"key_0\": 2763,\n    \"key_1\": 563.6657355845731,\n    \"key_2\": 8784.960682227489\n  },\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  },\n  \"countries\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "487950fa-e26e-444f-a8ea-6737cef5a051",
+              "name": "Access token lacks permission for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "authentication",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"account_id\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"tenant_id\": \"<string>\",\n  \"policy_id\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"device_os\": \"<string>\",\n  \"installation_id\": \"<string>\",\n  \"session_token\": \"<string>\",\n  \"request_token\": \"<string>\",\n  \"related_web_request_token\": \"<string>\",\n  \"store_id\": \"<string>\",\n  \"payment_method_identifier\": \"<string>\",\n  \"location\": {\n    \"latitude\": 5351.341068759086,\n    \"longitude\": 9980.612199300425,\n    \"collected_at\": \"2021-01-21T01:15:40.627Z\"\n  },\n  \"addresses\": [\n    {\n      \"type\": \"billing\",\n      \"address_coordinates\": {\n        \"lat\": 2954.5068858512836,\n        \"lng\": 4793.9678060940305\n      },\n      \"structured_address\": {\n        \"locale\": \"string\",\n        \"country_name\": \"string\",\n        \"country_code\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"borough\": \"string\",\n        \"neighborhood\": \"string\",\n        \"street\": \"string\",\n        \"number\": \"string\",\n        \"complements\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"address_line\": \"string\"\n    },\n    {\n      \"type\": \"shipping\",\n      \"address_coordinates\": {\n        \"lat\": 662.8055273096655,\n        \"lng\": 9807.422502289017\n      },\n      \"structured_address\": {\n        \"locale\": \"string\",\n        \"country_name\": \"string\",\n        \"country_code\": \"string\",\n        \"state\": \"string\",\n        \"city\": \"string\",\n        \"county\": \"string\",\n        \"borough\": \"string\",\n        \"neighborhood\": \"string\",\n        \"street\": \"string\",\n        \"number\": \"string\",\n        \"complements\": \"string\",\n        \"postal_code\": \"string\"\n      },\n      \"address_line\": \"string\"\n    }\n  ],\n  \"payment_value\": {\n    \"amount\": 2954.569054947097,\n    \"currency\": \"string\"\n  },\n  \"payment_methods\": [\n    {\n      \"identifier\": \"string\",\n      \"type\": \"cash\",\n      \"credit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"brand\": \"string\"\n    },\n    {\n      \"identifier\": \"string\",\n      \"type\": \"meal_voucher\",\n      \"credit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"debit_card_info\": {\n        \"bin\": \"string\",\n        \"last_four_digits\": \"string\",\n        \"expiry_year\": \"string\",\n        \"expiry_month\": \"string\"\n      },\n      \"brand\": \"string\"\n    }\n  ],\n  \"custom_properties\": {\n    \"key_0\": 2763,\n    \"key_1\": 563.6657355845731,\n    \"key_2\": 8784.960682227489\n  },\n  \"person_id\": {\n    \"type\": \"string\",\n    \"value\": \"string\"\n  },\n  \"countries\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"missing credentials\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.incognia.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e23edf1d-dd11-40bc-bbe6-91535ebd1ce1",
+    "name": "Incognia Authentication Transactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Incognia is a location identity and device fingerprinting platform for fraud prevention. The API returns real-time risk assessments (low_risk, high_risk, unknown_risk) for onboarding signups and authentication transactions (login and payment), and accepts feedback events used to continuously tune the risk model. Assessments combine device recognition signals, location behavior analysis, and tamper detection. Authentication uses OAuth 2.0 client credentials: a client_id and client_secret are exchanged at the token endpoint for a short-lived bearer access token.\n\nContact Support:\n Name: Incognia Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

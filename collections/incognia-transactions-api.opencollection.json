@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Incognia Authentication Transactions API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a login or payment transaction for risk assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.incognia.com/api/v2/authentication/transactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluate a login or payment transaction and return a risk assessment. Set type to \"login\" or \"payment\". Payment transactions may include payment_value, payment_methods and addresses; both accept an account_id to bind the assessment to a known user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
