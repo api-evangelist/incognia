@@ -113,6 +113,8 @@ apis:
   humanURL: https://developer.incognia.com/docs/
   baseURL: https://api.incognia.com/api
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
