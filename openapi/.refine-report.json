@@ -1,10 +1,7 @@
 {
   "provider": "incognia",
   "sources": [
-    "incognia-authentication-api-openapi.yml",
-    "incognia-feedback-api-openapi.yml",
-    "incognia-onboarding-api-openapi.yml",
-    "incognia-transactions-api-openapi.yml"
+    "_original/incognia-openapi-original.yml"
   ],
   "outputs": [
     "incognia-authentication-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "incognia-openapi-original.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "incognia-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "incognia-feedback-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "incognia-onboarding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "incognia-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

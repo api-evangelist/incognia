@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Incognia Authentication Onboarding API
+  title: Incognia Onboarding API
   version: v2
-  description: 'Incognia is a location identity and device fingerprinting platform for fraud prevention. The API returns real-time risk assessments (low_risk, high_risk, unknown_risk) for onboarding signups and authentication transactions (login and payment), and accepts feedback events used to continuously tune the risk model. Assessments combine device recognition signals, location behavior analysis, and tamper detection. Authentication uses OAuth 2.0 client credentials: a client_id and client_secret are exchanged at the token endpoint for a short-lived bearer access token.'
+  description: Incognia is a location identity and device fingerprinting platform for fraud prevention.
   contact:
     name: Incognia Developer Support
     url: https://developer.incognia.com/
@@ -56,60 +56,12 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Coordinates:
+    Reason:
       type: object
       properties:
-        lat:
-          type: number
-          format: double
-        lng:
-          type: number
-          format: double
-    SignupAssessment:
-      type: object
-      properties:
-        id:
+        code:
           type: string
-        device_id:
-          type: string
-        request_id:
-          type: string
-        risk_assessment:
-          $ref: '#/components/schemas/RiskAssessment'
-        evidence:
-          type: object
-          additionalProperties: true
-        reasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reason'
-        actions:
-          type: array
-          items:
-            type: string
-        signals:
-          type: object
-          additionalProperties: true
-    RiskAssessment:
-      type: string
-      enum:
-      - low_risk
-      - high_risk
-      - unknown_risk
-      description: Overall risk verdict returned by Incognia.
-    Error:
-      type: object
-      description: Incognia error envelope.
-      properties:
-        message:
-          type: string
-          example: missing credentials
-    PersonID:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
+        source:
           type: string
     StructuredAddress:
       type: object
@@ -172,13 +124,61 @@ components:
           additionalProperties: true
         person_id:
           $ref: '#/components/schemas/PersonID'
-    Reason:
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
+    RiskAssessment:
+      type: string
+      enum:
+      - low_risk
+      - high_risk
+      - unknown_risk
+      description: Overall risk verdict returned by Incognia.
+    Coordinates:
       type: object
       properties:
-        code:
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+    PersonID:
+      type: object
+      properties:
+        type:
           type: string
-        source:
+        value:
           type: string
+    SignupAssessment:
+      type: object
+      properties:
+        id:
+          type: string
+        device_id:
+          type: string
+        request_id:
+          type: string
+        risk_assessment:
+          $ref: '#/components/schemas/RiskAssessment'
+        evidence:
+          type: object
+          additionalProperties: true
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+        actions:
+          type: array
+          items:
+            type: string
+        signals:
+          type: object
+          additionalProperties: true
   securitySchemes:
     basicAuth:
       type: http
