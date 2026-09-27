@@ -56,6 +56,40 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        collected_at:
+          type: string
+          format: date-time
+    TransactionAddress:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - shipping
+          - billing
+          - home
+        address_coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        structured_address:
+          $ref: '#/components/schemas/StructuredAddress'
+        address_line:
+          type: string
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
     TransactionAssessment:
       type: object
       properties:
@@ -79,58 +113,6 @@ components:
         signals:
           type: object
           additionalProperties: true
-    Reason:
-      type: object
-      properties:
-        code:
-          type: string
-        source:
-          type: string
-    TransactionAddress:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - shipping
-          - billing
-          - home
-        address_coordinates:
-          $ref: '#/components/schemas/Coordinates'
-        structured_address:
-          $ref: '#/components/schemas/StructuredAddress'
-        address_line:
-          type: string
-    PaymentMethod:
-      type: object
-      properties:
-        identifier:
-          type: string
-        type:
-          type: string
-          enum:
-          - account_balance
-          - apple_pay
-          - bancolombia
-          - boleto_bancario
-          - cash
-          - credit_card
-          - credit_card_pos
-          - debit_card
-          - google_pay
-          - meal_voucher
-          - nu_pay
-          - paypal
-          - pix
-          - pix_refund
-          - tef
-          - ted
-        credit_card_info:
-          $ref: '#/components/schemas/CardInfo'
-        debit_card_info:
-          $ref: '#/components/schemas/CardInfo'
-        brand:
-          type: string
     CardInfo:
       type: object
       properties:
@@ -142,52 +124,13 @@ components:
           type: string
         expiry_month:
           type: string
-    StructuredAddress:
+    PersonID:
       type: object
       properties:
-        locale:
+        type:
           type: string
-        country_name:
+        value:
           type: string
-        country_code:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-        county:
-          type: string
-        borough:
-          type: string
-        neighborhood:
-          type: string
-        street:
-          type: string
-        number:
-          type: string
-        complements:
-          type: string
-        postal_code:
-          type: string
-    Error:
-      type: object
-      description: Incognia error envelope.
-      properties:
-        message:
-          type: string
-          example: missing credentials
-    Location:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        collected_at:
-          type: string
-          format: date-time
     TransactionRequest:
       type: object
       required:
@@ -244,6 +187,13 @@ components:
           type: array
           items:
             type: string
+    Reason:
+      type: object
+      properties:
+        code:
+          type: string
+        source:
+          type: string
     RiskAssessment:
       type: string
       enum:
@@ -251,6 +201,44 @@ components:
       - high_risk
       - unknown_risk
       description: Overall risk verdict returned by Incognia.
+    PaymentValue:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+    PaymentMethod:
+      type: object
+      properties:
+        identifier:
+          type: string
+        type:
+          type: string
+          enum:
+          - account_balance
+          - apple_pay
+          - bancolombia
+          - boleto_bancario
+          - cash
+          - credit_card
+          - credit_card_pos
+          - debit_card
+          - google_pay
+          - meal_voucher
+          - nu_pay
+          - paypal
+          - pix
+          - pix_refund
+          - tef
+          - ted
+        credit_card_info:
+          $ref: '#/components/schemas/CardInfo'
+        debit_card_info:
+          $ref: '#/components/schemas/CardInfo'
+        brand:
+          type: string
     Coordinates:
       type: object
       properties:
@@ -260,20 +248,32 @@ components:
         lng:
           type: number
           format: double
-    PersonID:
+    StructuredAddress:
       type: object
       properties:
-        type:
+        locale:
           type: string
-        value:
+        country_name:
           type: string
-    PaymentValue:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        currency:
+        country_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        borough:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        complements:
+          type: string
+        postal_code:
           type: string
   securitySchemes:
     basicAuth:

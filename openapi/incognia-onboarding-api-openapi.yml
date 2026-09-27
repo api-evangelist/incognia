@@ -56,40 +56,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Reason:
-      type: object
-      properties:
-        code:
-          type: string
-        source:
-          type: string
-    StructuredAddress:
-      type: object
-      properties:
-        locale:
-          type: string
-        country_name:
-          type: string
-        country_code:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-        county:
-          type: string
-        borough:
-          type: string
-        neighborhood:
-          type: string
-        street:
-          type: string
-        number:
-          type: string
-        complements:
-          type: string
-        postal_code:
-          type: string
     SignupRequest:
       type: object
       properties:
@@ -131,29 +97,6 @@ components:
         message:
           type: string
           example: missing credentials
-    RiskAssessment:
-      type: string
-      enum:
-      - low_risk
-      - high_risk
-      - unknown_risk
-      description: Overall risk verdict returned by Incognia.
-    Coordinates:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: double
-        lng:
-          type: number
-          format: double
-    PersonID:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
     SignupAssessment:
       type: object
       properties:
@@ -179,6 +122,63 @@ components:
         signals:
           type: object
           additionalProperties: true
+    PersonID:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+    Reason:
+      type: object
+      properties:
+        code:
+          type: string
+        source:
+          type: string
+    RiskAssessment:
+      type: string
+      enum:
+      - low_risk
+      - high_risk
+      - unknown_risk
+      description: Overall risk verdict returned by Incognia.
+    Coordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+    StructuredAddress:
+      type: object
+      properties:
+        locale:
+          type: string
+        country_name:
+          type: string
+        country_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        borough:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        complements:
+          type: string
+        postal_code:
+          type: string
   securitySchemes:
     basicAuth:
       type: http
