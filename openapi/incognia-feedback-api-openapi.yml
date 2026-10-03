@@ -53,13 +53,6 @@ components:
         message:
           type: string
           example: missing credentials
-    PersonID:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
     FeedbackRequest:
       type: object
       required:
@@ -119,6 +112,13 @@ components:
           type: string
         person_id:
           $ref: '#/components/schemas/PersonID'
+    PersonID:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

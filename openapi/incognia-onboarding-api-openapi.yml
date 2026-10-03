@@ -56,6 +56,95 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Reason:
+      type: object
+      properties:
+        code:
+          type: string
+        source:
+          type: string
+    Coordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+    SignupAssessment:
+      type: object
+      properties:
+        id:
+          type: string
+        device_id:
+          type: string
+        request_id:
+          type: string
+        risk_assessment:
+          $ref: '#/components/schemas/RiskAssessment'
+        evidence:
+          type: object
+          additionalProperties: true
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+        actions:
+          type: array
+          items:
+            type: string
+        signals:
+          type: object
+          additionalProperties: true
+    RiskAssessment:
+      type: string
+      enum:
+      - low_risk
+      - high_risk
+      - unknown_risk
+      description: Overall risk verdict returned by Incognia.
+    StructuredAddress:
+      type: object
+      properties:
+        locale:
+          type: string
+        country_name:
+          type: string
+        country_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        borough:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        complements:
+          type: string
+        postal_code:
+          type: string
+    PersonID:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
     SignupRequest:
       type: object
       properties:
@@ -90,95 +179,6 @@ components:
           additionalProperties: true
         person_id:
           $ref: '#/components/schemas/PersonID'
-    Error:
-      type: object
-      description: Incognia error envelope.
-      properties:
-        message:
-          type: string
-          example: missing credentials
-    SignupAssessment:
-      type: object
-      properties:
-        id:
-          type: string
-        device_id:
-          type: string
-        request_id:
-          type: string
-        risk_assessment:
-          $ref: '#/components/schemas/RiskAssessment'
-        evidence:
-          type: object
-          additionalProperties: true
-        reasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reason'
-        actions:
-          type: array
-          items:
-            type: string
-        signals:
-          type: object
-          additionalProperties: true
-    PersonID:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-    Reason:
-      type: object
-      properties:
-        code:
-          type: string
-        source:
-          type: string
-    RiskAssessment:
-      type: string
-      enum:
-      - low_risk
-      - high_risk
-      - unknown_risk
-      description: Overall risk verdict returned by Incognia.
-    Coordinates:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: double
-        lng:
-          type: number
-          format: double
-    StructuredAddress:
-      type: object
-      properties:
-        locale:
-          type: string
-        country_name:
-          type: string
-        country_code:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-        county:
-          type: string
-        borough:
-          type: string
-        neighborhood:
-          type: string
-        street:
-          type: string
-        number:
-          type: string
-        complements:
-          type: string
-        postal_code:
-          type: string
   securitySchemes:
     basicAuth:
       type: http
