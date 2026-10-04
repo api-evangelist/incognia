@@ -46,13 +46,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: Incognia error envelope.
-      properties:
-        message:
-          type: string
-          example: missing credentials
     FeedbackRequest:
       type: object
       required:
@@ -119,6 +112,13 @@ components:
           type: string
         value:
           type: string
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
   securitySchemes:
     basicAuth:
       type: http
