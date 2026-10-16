@@ -2,6 +2,20 @@
   "repo": "incognia",
   "feeds": [
     {
+      "source": "https://www.incognia.com/blog/rss.xml",
+      "feed_url": "https://www.incognia.com/blog/rss.xml",
+      "title": "",
+      "saved": 1,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.incognia.com/blog",
+      "feed_url": "https://www.incognia.com/blog/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    },
+    {
       "source": "https://developer.incognia.com/docs/us/v5/apis/incognia-libraries/",
       "feed_url": "https://developer.incognia.com/docs/us/v5/apis/incognia-libraries/",
       "title": "",
@@ -9,6 +23,6 @@
       "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-10-03T12:30:02Z"
+  "post_count": 1,
+  "fetched": "2026-10-10T13:15:00Z"
 }
