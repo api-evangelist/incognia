@@ -56,33 +56,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    StructuredAddress:
-      type: object
-      properties:
-        locale:
-          type: string
-        country_name:
-          type: string
-        country_code:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-        county:
-          type: string
-        borough:
-          type: string
-        neighborhood:
-          type: string
-        street:
-          type: string
-        number:
-          type: string
-        complements:
-          type: string
-        postal_code:
-          type: string
     SignupRequest:
       type: object
       properties:
@@ -117,6 +90,54 @@ components:
           additionalProperties: true
         person_id:
           $ref: '#/components/schemas/PersonID'
+    RiskAssessment:
+      type: string
+      enum:
+      - low_risk
+      - high_risk
+      - unknown_risk
+      description: Overall risk verdict returned by Incognia.
+    PersonID:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+    StructuredAddress:
+      type: object
+      properties:
+        locale:
+          type: string
+        country_name:
+          type: string
+        country_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        borough:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        complements:
+          type: string
+        postal_code:
+          type: string
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
     Coordinates:
       type: object
       properties:
@@ -126,27 +147,6 @@ components:
         lng:
           type: number
           format: double
-    Error:
-      type: object
-      description: Incognia error envelope.
-      properties:
-        message:
-          type: string
-          example: missing credentials
-    PersonID:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-    Reason:
-      type: object
-      properties:
-        code:
-          type: string
-        source:
-          type: string
     SignupAssessment:
       type: object
       properties:
@@ -172,13 +172,13 @@ components:
         signals:
           type: object
           additionalProperties: true
-    RiskAssessment:
-      type: string
-      enum:
-      - low_risk
-      - high_risk
-      - unknown_risk
-      description: Overall risk verdict returned by Incognia.
+    Reason:
+      type: object
+      properties:
+        code:
+          type: string
+        source:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

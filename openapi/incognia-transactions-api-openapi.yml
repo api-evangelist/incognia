@@ -56,169 +56,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    StructuredAddress:
-      type: object
-      properties:
-        locale:
-          type: string
-        country_name:
-          type: string
-        country_code:
-          type: string
-        state:
-          type: string
-        city:
-          type: string
-        county:
-          type: string
-        borough:
-          type: string
-        neighborhood:
-          type: string
-        street:
-          type: string
-        number:
-          type: string
-        complements:
-          type: string
-        postal_code:
-          type: string
-    TransactionAddress:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - shipping
-          - billing
-          - home
-        address_coordinates:
-          $ref: '#/components/schemas/Coordinates'
-        structured_address:
-          $ref: '#/components/schemas/StructuredAddress'
-        address_line:
-          type: string
-    TransactionAssessment:
-      type: object
-      properties:
-        id:
-          type: string
-        risk_assessment:
-          $ref: '#/components/schemas/RiskAssessment'
-        device_id:
-          type: string
-        evidence:
-          type: object
-          additionalProperties: true
-        reasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reason'
-        actions:
-          type: array
-          items:
-            type: string
-        signals:
-          type: object
-          additionalProperties: true
-    Coordinates:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: double
-        lng:
-          type: number
-          format: double
-    Error:
-      type: object
-      description: Incognia error envelope.
-      properties:
-        message:
-          type: string
-          example: missing credentials
-    PersonID:
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-    RiskAssessment:
-      type: string
-      enum:
-      - low_risk
-      - high_risk
-      - unknown_risk
-      description: Overall risk verdict returned by Incognia.
-    Location:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        collected_at:
-          type: string
-          format: date-time
-    CardInfo:
-      type: object
-      properties:
-        bin:
-          type: string
-        last_four_digits:
-          type: string
-        expiry_year:
-          type: string
-        expiry_month:
-          type: string
-    Reason:
-      type: object
-      properties:
-        code:
-          type: string
-        source:
-          type: string
-    PaymentValue:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        currency:
-          type: string
-    PaymentMethod:
-      type: object
-      properties:
-        identifier:
-          type: string
-        type:
-          type: string
-          enum:
-          - account_balance
-          - apple_pay
-          - bancolombia
-          - boleto_bancario
-          - cash
-          - credit_card
-          - credit_card_pos
-          - debit_card
-          - google_pay
-          - meal_voucher
-          - nu_pay
-          - paypal
-          - pix
-          - pix_refund
-          - tef
-          - ted
-        credit_card_info:
-          $ref: '#/components/schemas/CardInfo'
-        debit_card_info:
-          $ref: '#/components/schemas/CardInfo'
-        brand:
-          type: string
     TransactionRequest:
       type: object
       required:
@@ -275,6 +112,169 @@ components:
           type: array
           items:
             type: string
+    PaymentValue:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+    RiskAssessment:
+      type: string
+      enum:
+      - low_risk
+      - high_risk
+      - unknown_risk
+      description: Overall risk verdict returned by Incognia.
+    TransactionAddress:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - shipping
+          - billing
+          - home
+        address_coordinates:
+          $ref: '#/components/schemas/Coordinates'
+        structured_address:
+          $ref: '#/components/schemas/StructuredAddress'
+        address_line:
+          type: string
+    Location:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        collected_at:
+          type: string
+          format: date-time
+    TransactionAssessment:
+      type: object
+      properties:
+        id:
+          type: string
+        risk_assessment:
+          $ref: '#/components/schemas/RiskAssessment'
+        device_id:
+          type: string
+        evidence:
+          type: object
+          additionalProperties: true
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reason'
+        actions:
+          type: array
+          items:
+            type: string
+        signals:
+          type: object
+          additionalProperties: true
+    PersonID:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+    StructuredAddress:
+      type: object
+      properties:
+        locale:
+          type: string
+        country_name:
+          type: string
+        country_code:
+          type: string
+        state:
+          type: string
+        city:
+          type: string
+        county:
+          type: string
+        borough:
+          type: string
+        neighborhood:
+          type: string
+        street:
+          type: string
+        number:
+          type: string
+        complements:
+          type: string
+        postal_code:
+          type: string
+    Error:
+      type: object
+      description: Incognia error envelope.
+      properties:
+        message:
+          type: string
+          example: missing credentials
+    Coordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+    PaymentMethod:
+      type: object
+      properties:
+        identifier:
+          type: string
+        type:
+          type: string
+          enum:
+          - account_balance
+          - apple_pay
+          - bancolombia
+          - boleto_bancario
+          - cash
+          - credit_card
+          - credit_card_pos
+          - debit_card
+          - google_pay
+          - meal_voucher
+          - nu_pay
+          - paypal
+          - pix
+          - pix_refund
+          - tef
+          - ted
+        credit_card_info:
+          $ref: '#/components/schemas/CardInfo'
+        debit_card_info:
+          $ref: '#/components/schemas/CardInfo'
+        brand:
+          type: string
+    CardInfo:
+      type: object
+      properties:
+        bin:
+          type: string
+        last_four_digits:
+          type: string
+        expiry_year:
+          type: string
+        expiry_month:
+          type: string
+    Reason:
+      type: object
+      properties:
+        code:
+          type: string
+        source:
+          type: string
   securitySchemes:
     basicAuth:
       type: http
