@@ -64,6 +64,130 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Incognia is a company surfaced as a portfolio company of bessemer-venture-partners and added to the API Evangelist network as a stub for enrichment. Sector: cybersecurity. This profile is a lead awaiting the enrichment pipeline.
+Incognia is a location identity and device fingerprinting platform for fraud prevention, providing real-time risk assessments for user onboarding, login, and payment transactions. Its API returns low_risk / high_risk / unknown_risk verdicts by combining privacy-first device recognition, location behavior analysis, and tamper detection, and accepts feedback events (chargebacks, account takeover, identity fraud, accepted/declined outcomes) that continuously tune the risk model. Incognia is used across financial services, fintech, marketplaces, delivery, and gaming to stop account takeover, new-account fraud, and payment fraud while reducing friction for trusted users. Authentication is OAuth 2.0 client credentials, exchanged for short-lived bearer tokens; official SDKs ship for Node.js, Python, Ruby, Java, and Go.
 
-Backed by: bessemer-venture-partners — https://www.incognia.com/
+**Areas:** Company · Cybersecurity · Fraud Prevention · Device Fingerprinting · Location Identity · Identity Verification · Risk Assessment · Authentication · Fintech
+
+## Incognia on APIs.io
+
+Everything profiled for Incognia is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/incognia/](https://apis.io/providers/incognia/)** — or go straight to one of the APIs or properties below.
+
+### APIs (4)
+
+- [Incognia Authentication API](https://apis.io/apis/incognia/incognia-authentication-api/) — OAuth 2.0 client-credentials token exchange
+- [Incognia Feedback API](https://apis.io/apis/incognia/incognia-feedback-api/) — Report labeled events to tune the risk model
+- [Incognia Onboarding API](https://apis.io/apis/incognia/incognia-onboarding-api/) — Signup risk assessment
+- [Incognia Transactions API](https://apis.io/apis/incognia/incognia-transactions-api/) — Login and payment risk assessment
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [incognia](https://apis.io/servers/incognia/incognia/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Incognia Agentic Access](https://apis.io/agentic-access/incognia/incognia-agentic-access/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Incognia Authentication API](https://apis.io/collections/incognia/open-incognia-authentication-api/)
+- [Incognia Authentication Feedback API](https://apis.io/collections/incognia/open-incognia-feedback-api/)
+- [Incognia Authentication Onboarding API](https://apis.io/collections/incognia/open-incognia-onboarding-api/)
+- [Incognia Authentication Transactions API](https://apis.io/collections/incognia/open-incognia-transactions-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Incognia Openapi Overlay](https://apis.io/overlays/incognia/incognia-openapi-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Incognia Authentication](https://apis.io/security/incognia/incognia-authentication/)
+- [Incognia Domain Security](https://apis.io/security/incognia/incognia-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Incognia Scopes](https://apis.io/scopes/incognia/incognia-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.incognia.com/)
+- [Documentation](https://developer.incognia.com/docs/)
+- [Getting started](https://developer.incognia.com/docs/us/v5/apis/incognia-libraries/)
+- [API reference](https://developer.incognia.com/docs/us/v5/apis/)
+- [Pricing](https://www.incognia.com/pricing)
+- [Blog](https://www.incognia.com/blog)
+- [Trust centre](https://trust.incognia.com/)
+- [Terms of service](https://www.incognia.com/terms-of-use)
+- [Privacy policy](https://www.incognia.com/policies/)
+- [GitHub](https://github.com/inloco)
+- [Status](https://status.incognia.com/)
+
+## API Evangelist rating
+
+**Kin Score 26.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 23.2 |
+| Access clarity | 31.6 |
+
+**Agent readiness 26.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 34.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/incognia/](https://apis.io/providers/incognia/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Incognia: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/incognia/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
